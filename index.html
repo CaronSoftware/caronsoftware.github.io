@@ -3,40 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CaronSoftware Projects</title>
+  <title>CaronSoftware — Home</title>
   <link rel="icon" type="image/png" href="TBFM.png" />
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #ff0000, 0 0 20px #ff3333; }
+      50% { box-shadow: 0 0 20px #ff3333, 0 0 40px #ff0000; }
+      100% { box-shadow: 0 0 10px #ff0000, 0 0 20px #ff3333; }
+    }
+
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #330000, #000);
       color: white;
-      text-align: center;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
     }
 
     h1 {
       font-size: 3em;
       color: #ff3333;
-      text-shadow: 0 0 15px #ff0000;
+      text-shadow: 0 0 20px #ff0000;
       margin-bottom: 10px;
+      animation: fadeIn 1s ease-out forwards;
     }
 
-    p {
-      color: #ffcccc;
-      font-size: 1.2em;
-      margin-bottom: 40px;
+    h2 {
+      color: #ffb3b3;
+      font-weight: 400;
+      animation: fadeIn 1.3s ease-out forwards;
     }
 
     .buttons {
+      margin-top: 40px;
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
+      animation: fadeIn 1.8s ease-out forwards;
     }
 
     .btn {
@@ -50,12 +65,13 @@
       text-decoration: none;
       box-shadow: 0 0 15px #ff1a1a;
       transition: 0.3s;
+      animation: pulse 2s infinite alternate;
     }
 
     .btn:hover {
       background: #ff4d4d;
-      box-shadow: 0 0 30px #ff4d4d, 0 0 60px #ff0000;
-      transform: scale(1.05);
+      transform: scale(1.07);
+      box-shadow: 0 0 40px #ff4d4d, 0 0 80px #ff0000;
     }
 
     footer {
@@ -63,18 +79,30 @@
       bottom: 15px;
       font-size: 0.9em;
       color: #888;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    .glow-line {
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff0000, transparent);
+      margin-top: 30px;
+      animation: pulse 3s infinite;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to CaronSoftware</h1>
-  <p>Explore our projects and creations by Caron.</p>
+  <h1>CaronSoftware</h1>
+  <h2>Projects by Caron — Python, Web & Creativity</h2>
+
+  <div class="glow-line"></div>
 
   <div class="buttons">
     <a class="btn" href="https://caronsoftware.github.io/TBFM/">TBFM</a>
-    <!-- Add more project links below as you make new ones -->
+    <!-- Add more buttons here as you make more projects -->
     <!-- Example:
-    <a class="btn" href="https://caronsoftware.github.io/AnotherProject/">Another Project</a>
+    <a class="btn" href="https://caronsoftware.github.io/AHORA/">AHORA</a>
     -->
   </div>
 
