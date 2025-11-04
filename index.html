@@ -23,6 +23,7 @@
       height: 100vh;
       text-align: center;
       overflow: hidden;
+      transition: all 0.4s ease;
     }
 
     h1 {
@@ -90,6 +91,24 @@
       transform: scale(1.05);
     }
 
+    .lang-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ff3333;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .lang-btn:hover {
+      background: #ff5555;
+    }
+
     footer {
       position: absolute;
       bottom: 15px;
@@ -107,26 +126,47 @@
       color: #ff3333;
       text-shadow: 0 0 8px #ff3333;
     }
+
+    [lang="fa"] {
+      direction: rtl;
+      font-family: "Vazir", sans-serif;
+    }
   </style>
 </head>
-<body>
-  <h1>CaronSoftware</h1>
-  <p>🔥 Home of creative software & beats 🔥</p>
+<body lang="en">
+  <button class="lang-btn" onclick="toggleLang()">فارسی / English</button>
+
+  <h1 data-en="CaronSoftware" data-fa="کارون سافت‌ویر">CaronSoftware</h1>
+  <p data-en="🔥 Home of creative software & beats 🔥" data-fa="🔥 خانه نرم‌افزارها و بیت‌های خلاقانه 🔥">🔥 Home of creative software & beats 🔥</p>
 
   <div class="section">
-    <h2>🧩 Projects:</h2>
-    <a class="btn" href="https://caronsoftware.github.io/TBFM/">TBFM</a>
+    <h2 data-en="🧩 Projects:" data-fa="🧩 پروژه‌ها:">🧩 Projects:</h2>
+    <a class="btn" href="https://caronsoftware.github.io/TBFM/" data-en="TBFM" data-fa="تی‌بی‌اف‌ام">TBFM</a>
   </div>
 
   <div class="divider"></div>
 
   <div class="section">
-    <h2>🎵 Music</h2>
-    <a class="btn" href="https://caronsoftware.github.io/Caronsongs/">Visit CaronSongs</a>
+    <h2 data-en="🎵 Music" data-fa="🎵 موسیقی">🎵 Music</h2>
+    <a class="btn" href="https://caronsoftware.github.io/Caronsongs/" data-en="Visit CaronSongs" data-fa="بازدید از کارون‌سانگز">Visit CaronSongs</a>
   </div>
 
-  <footer>
+  <footer data-en="© 2025 CaronSoftware — All Rights Reserved" data-fa="© ۲۰۲۵ کارون سافت‌ویر — همه حقوق محفوظ است">
     © 2025 CaronSoftware — All Rights Reserved
   </footer>
+
+  <script>
+    function toggleLang() {
+      const body = document.body;
+      const currentLang = body.getAttribute("lang");
+      const newLang = currentLang === "en" ? "fa" : "en";
+      body.setAttribute("lang", newLang);
+
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute(`data-${newLang}`);
+      });
+    }
+  </script>
 </body>
 </html>
+
