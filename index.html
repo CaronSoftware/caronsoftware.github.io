@@ -161,10 +161,12 @@
       const currentLang = body.getAttribute("lang");
       const newLang = currentLang === "en" ? "fa" : "en";
       body.setAttribute("lang", newLang);
-
       document.querySelectorAll("[data-en]").forEach(el => {
         el.textContent = el.getAttribute(`data-${newLang}`);
       });
+  <div class="section">
+    <a class"btn" href="https://github.com/CaronSoftware/" data-en="View on Github" data-fa="دیدن در گیت هاب">رهسهف لهفاعذ</>
+  </div>
     }
   </script>
 </body>
