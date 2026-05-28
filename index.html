@@ -1,177 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CaronSoftware</title>
-  <link rel="icon" href="csoft.png">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaronSoftware | خانه</title>
+    <link rel="icon" href="csoft.png">
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --dark-bg: #121212;
+            --text-white: #ffffff;
+        }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: radial-gradient(circle at top, #000000, #111);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Use min-height to allow content to push footer down */
+            padding-bottom: 60px; /* Add padding to body to prevent content from being hidden by the footer */
+            box-sizing: border-box; /* Include padding in height calculation */
+        }
 
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      color: #ff3333;
-      text-shadow: 0 0 25px #ff0000;
-      animation: glow 2s infinite alternate;
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ff0000; }
-      to { text-shadow: 0 0 25px #ff3333; }
-    }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
 
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 40px;
-    }
+        .cta-button {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
 
-    .section {
-      width: 90%;
-      max-width: 700px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 20px 0;
-    }
+        .cta-button:hover {
+            background-color: #b71c1c;
+        }
 
-    .divider {
-      width: 80%;
-      height: 3px;
-      background: linear-gradient(to right, #ff3333, #ff6666);
-      margin: 30px 0;
-      border-radius: 10px;
-      animation: slide 4s infinite alternate;
-    }
+        .header-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px; /* Position on the left for LTR languages, or adjust if needed for RTL */
+            display: flex;
+            gap: 10px;
+        }
 
-    @keyframes slide {
-      from { transform: scaleX(0.8); }
-      to { transform: scaleX(1.05); }
-    }
+        .lang-switch-button {
+            background: none;
+            border: 1px solid var(--text-white);
+            color: var(--text-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
 
-    .btn {
-      background: white;
-      color: #111;
-      border: none;
-      padding: 15px 35px;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 10px;
-      box-shadow: 0 0 10px #ff3333;
-    }
+        .lang-switch-button:hover {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+        }
 
-    .btn:hover {
-      background: #ff3333;
-      color: white;
-      box-shadow: 0 0 25px #ff3333;
-      transform: scale(1.05);
-    }
-
-    .lang-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #ff3333;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .lang-btn:hover {
-      background: #ff5555;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    footer a {
-      color: #ff6666;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    footer a:hover {
-      color: #ff3333;
-      text-shadow: 0 0 8px #ff3333;
-    }
-
-    [lang="fa"] {
-      direction: rtl;
-      font-family: "Vazir", sans-serif;
-    }
-  </style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.8); /* Slightly transparent dark background */
+            color: var(--text-white);
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-<body lang="en">
-  <button class="lang-btn" onclick="toggleLang()">فارسی / English</button>
+<body>
 
-  <h1 data-en="CaronSoftware" data-fa="کارون سافت‌">CaronSoftware</h1>
-  <p data-en="🔥 Home of creative software & beats 🔥" data-fa="🔥 خانه نرم‌افزارها و بیت‌های خلاقانه 🔥">🔥 Home of creative software & beats 🔥</p>
+    <div class="header-controls">
+        <button class="lang-switch-button">English</button>
+    </div>
 
-  <div class="section">
-    <h2 data-en="🧩 Projects:" data-fa="🧩 پروژه‌ها:">🧩 Projects:</h2>
-    <a class="btn" href="https://caronsoftware.github.io/TBFM/" data-en="TBFM" data-fa="تی‌بی‌اف‌ام">TBFM</a>
-  </div>
+    <h1>CaronSoftware</h1>
+    <p>ابزارهایی برای آینده. آخرین پروژه ما را ببینید.</p>
+    
+    <a href="TBFM" class="cta-button">دانلود TBFM</a>
 
-  <div class="divider"></div>
+    <footer class="footer">
+        © 2024 CaronSoftware. تمامی حقوق محفوظ است.
+    </footer>
 
-  <div class="section">
-    <h2 data-en="🎵 Music" data-fa="🎵 موسیقی">🎵 Music</h2>
-    <a class="btn" href="https://caronsoftware.github.io/Caronsongs/" data-en="Visit CaronSongs" data-fa="بازدید از کارون‌سانگز">Visit CaronSongs</a>
-  </div>
+    <script>
+        // Basic JavaScript for language switching - this would need more logic for actual content change
+        const langSwitchButton = document.querySelector('.lang-switch-button');
+        const mainHeading = document.querySelector('h1');
+        const mainParagraph = document.querySelector('p');
+        const tbfmButton = document.querySelector('.cta-button');
+        const footerText = document.querySelector('.footer');
 
-  <div class="divider"></div>
+        let isPersian = true;
 
-  <div class="section">
-    <h2 data-en="🌐 GitHub" data-fa="🌐 گیت‌هاب">🌐 GitHub</h2>
-    <a class="btn" href="https://github.com/CaronSoftware/" target="_blank" data-en="Visit GitHub" data-fa="دیدن در گیت‌هاب">Visit GitHub</a>
-  </div>
+        langSwitchButton.addEventListener('click', () => {
+            if (isPersian) {
+                // Switch to English
+                mainHeading.textContent = 'CaronSoftware';
+                mainParagraph.textContent = 'Developing tools for the future. Check out our latest project.';
+                tbfmButton.textContent = 'Download TBFM';
+                footerText.textContent = '© 2024 CaronSoftware. All rights reserved.';
+                document.documentElement.lang = 'en'; // Update HTML lang attribute
+                document.documentElement.dir = 'ltr'; // Set direction to LTR for English
+                langSwitchButton.textContent = 'فارسی';
+            } else {
+                // Switch to Persian
+                mainHeading.textContent = 'CaronSoftware'; // Keep it consistent or change if needed
+                mainParagraph.textContent = 'ابزارهایی برای آینده. آخرین پروژه ما را ببینید.';
+                tbfmButton.textContent = 'دانلود TBFM';
+                footerText.textContent = '© 2024 CaronSoftware. تمامی حقوق محفوظ است.';
+                document.documentElement.lang = 'fa'; // Update HTML lang attribute
+                document.documentElement.dir = 'rtl'; // Set direction to RTL for Persian
+                langSwitchButton.textContent = 'English';
+            }
+            isPersian = !isPersian;
+        });
+    </script>
 
-  <footer data-en="© 2025 CaronSoftware — All Rights Reserved" data-fa="© ۲۰۲۵ کارون سافت‌ — همه حقوق محفوظ است">
-    © 2025 CaronSoftware — All Rights Reserved
-  </footer>
-
-  <script>
-    function toggleLang() {
-      const body = document.body;
-      const currentLang = body.getAttribute("lang");
-      const newLang = currentLang === "en" ? "fa" : "en";
-      body.setAttribute("lang", newLang);
-      document.querySelectorAll("[data-en]").forEach(el => {
-        el.textContent = el.getAttribute(`data-${newLang}`);
-      });
-    }
-  </script>
 </body>
 </html>
